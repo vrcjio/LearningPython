@@ -1,4 +1,4 @@
-# ![Python](../pythonLogo.png "Python Langauge"){:width="100px" :height="100px"} Introduction
+# <img src="../pythonLogo.png" width="100" alt="Python Logo"> Introduction
 ***Python ek high-level programming language hai.***
 
 1. Programming Kya Hai? (What is Programming?)

@@ -1,4 +1,4 @@
-# <img src="../pythonLogo.png" width="100" alt="Python Logo"> Introduction
+# <img src="../pythonLogo.png" width="50" alt="Python Logo"> Introduction
 ***Python ek high-level programming language hai.***
 
 1. Programming Kya Hai? (What is Programming?)

@@ -1,4 +1,4 @@
-# 01 Python Introduction
+# ![Python](../pythonLogo.png "Python Langauge") Introduction
 ***Python ek high-level programming language hai.***
 
 1. Programming Kya Hai? (What is Programming?)

@@ -55,3 +55,101 @@ Kisi bhi dataset par master karne ke liye hamesha yeh 3 steps follow karein:
 1.  **Baseline Model:** Sabse pehle ek simple model (`Linear` ya `Logistic`) lagayein aur uska accuracy score check karein.
 2.  **Advanced Model:** Phir usi data par ek complex model (`Random Forest` ya `Gradient Boosting`) lagayein.
 3.  **Comparison:** Dono ke scores ko compare karein aur dekhein ki complex model ne accuracy kitni badhai.
+   
+
+------------------------------
+## 📋 Machine Learning Hands-on Assignment (Easy to Advance)## 🌸 1. Iris Flower Dataset (Warm-up / Easy)
+
+**Goal**: Phoolon ki patti (Sepal & Petal) ka size dekhkar unki sahi species/category pehchanna.
+
+* **Problem Type**: Multi-class Classification
+* **Import Command**:` import seaborn as sns; df = sns.load_dataset('iris')`
+* **Suggested Models**: `DecisionTreeClassifier` ya `RandomForestClassifier`
+* **Key Challenge**: Pehla self-code test karna aur `accuracy_score` check karna.
+
+------------------------------
+## 🐧 2. Penguins Dataset (Easy)
+
+**Goal**: Penguins ke body features (Flipper length, Bill depth) dekhkar unki sahi species (Adelie, Chinstrap, Gentoo) ko predict karna.
+
+* **Problem Type**: Multi-class Classification
+* **Import Command**: `import seaborn as sns; df = sns.load_dataset('penguins')`
+* **Suggested Models**: `RandomForestClassifier` ya `KNeighborsClassifier`
+* **Key Challenge**: Is dataset me kuch rows me missing values (NaN) hain. Pehle .dropna() ka use karke data ko handle karna seekhein.
+
+------------------------------
+## 🚗 3. MPG (Miles Per Gallon) Dataset (Medium)
+
+**Goal**: Car ke features (Cylinders, Horsepower, Weight) dekhkar car ka exact mileage (MPG) predict karna.
+
+* **Problem Type**: Continuous Regression
+* **Import Command**: `import seaborn as sns; df = sns.load_dataset('mpg')`
+* **Suggested Models**: `LinearRegression` ya `RandomForestRegressor`
+* **Key Challenge**: Yeh aapka pehla regression test hai. Isme accuracy score nahi, balki `mean_absolute_error` (MAE) aur `r2_score` calculate karna hai.
+
+------------------------------
+## 🩺 4. Pima Indians Diabetes Dataset (Medium)
+
+**Goal**: Patient ke medical reports (Glucose, Blood Pressure, Insulin, Age) ko nikal kar yeh predict karna ki use diabetes hai ya nahi (0 = No, 1 = Yes).
+
+* **Problem Type**: Binary Classification
+* **Import Command**:
+```python
+import pandas as pdurl = "https://githubusercontent.com"
+df = pd.read_csv(url, names=['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI', 'DiabetesPedigree', 'Age', 'Outcome'])
+```
+
+* **Suggested Models**: `LogisticRegression` ya `RandomForestClassifier`
+* **Key Challenge**: Data unbalanced hai (Healthy log zyada hain, bimar kam). Train-test-split karte waqt `stratify=y` lagana compulsory hai.
+
+------------------------------
+## 🍽️ 5. Restaurant Tips Dataset (Medium)
+
+**Goal**: Total bill, table size, day, aur time ko dekhkar yeh predict karna ki customer lagbhag kitne dollar ki Tip ($ Value) dekar jayega.
+
+
+* **Problem Type**: Continuous Regression
+* **Import Command**: `import seaborn as sns; df = sns.load_dataset('tips')`
+* **Suggested Models**: `RandomForestRegressor` ya `HistGradientBoostingRegressor`
+* **Key Challenge**: Isme text columns hain (Sex: Male/Female, Smoker: Yes/No). Model me daalne se pehle unhe `pd.get_dummies()` se numeric me badalna seekhein.
+
+------------------------------
+## 🚢 6. Titanic: Machine Learning from Disaster (High)
+
+**Goal**: Passenger ki personal details (Class, Age, Sex, Ticket Fare) dekhkar predict karna ki kya woh is samundari hadse me bach paya tha ya nahi (Survived: 0 ya 1).
+
+
+* **Problem Type**: Binary Classification
+* **Import Command**: `import seaborn as sns; df = sns.load_dataset('titanic')`
+* **Suggested Models**: `DecisionTreeClassifier` ya `RandomForestClassifier`
+* **Key Challenge**: Asli data cleaning challenge! Bohot saari missing values hain jise `.fillna()` se bharna padega aur categorical text data ko convert karna padega.
+
+------------------------------
+## 💎 7. Diamond Price Prediction Dataset (High)
+
+**Goal**: Diamond ka weight (Carat), cut, color, aur dimensions dekhkar uski market price ($) predict karna.
+
+
+* **Problem Type**: Advanced Regression
+* **Import Command**: `import seaborn as sns; df = sns.load_dataset('diamonds')`
+* **Suggested Models**: `HistGradientBoostingRegressor` ya `RandomForestRegressor`
+* **Key Challenge**: Is dataset me 50,000 se zyada rows (Bada data) hain. RandomForest yahan bohot slow chalega, isliye student ko `HistGradientBoostingRegressor` ka real use-case samajh aayega.
+
+------------------------------
+## 🏠 8. California Housing Dataset (Expert / Final Challenge)
+
+**Goal**: Kisi area ke logon ki median income, gharon ki age, aur location (Latitude/Longitude) dekhkar wahan ke gharon ki average cost predict karna.
+
+
+* **Problem Type**: Advanced Regression with Feature Engineering
+* **Import Command**:
+```python
+from sklearn.datasets import fetch_california_housing
+import pandas as pd
+raw = fetch_california_housing()
+df = pd.DataFrame(raw.data, columns=raw.feature_names)
+df['Price'] = raw.target
+```
+* **Suggested Models**: `HistGradientBoostingRegressor` aur model tuning parameters ke saath.
+* **Key Challenge**: Purane models ki accuracy ek limit par ruk jayegi. Student ko 85%+ accuracy touch karne ke liye khud se naye columns (Feature Engineering jaise: Rooms per Person) banane honge.
+

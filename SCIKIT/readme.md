@@ -154,3 +154,30 @@ df['Price'] = raw.target
 * **Suggested Models**: `HistGradientBoostingRegressor` aur model tuning parameters ke saath.
 * **Key Challenge**: Purane models ki accuracy ek limit par ruk jayegi. Student ko 85%+ accuracy touch karne ke liye khud se naye columns (Feature Engineering jaise: Rooms per Person) banane honge.
 
+-------
+## Stacking Regression 
+```python
+from sklearn.ensemble import StackingRegressor, HistGradientBoostingRegressor, RandomForestRegressor
+from sklearn.linear_model import RidgeCV
+from sklearn.metrics import r2_score
+
+# Step 1: Apni 'Dabang Models' ki team banayein (Base Models)
+base_models = [
+    ('rf', RandomForestRegressor(n_estimators=50, random_state=42, n_jobs=-1)),
+    ('hg', HistGradientBoostingRegressor(random_state=42))
+]
+
+# Step 2: Final decision lene wala commander set karein (Meta-Learner)
+meta_model = RidgeCV()
+
+# Step 3: Stacking Model taiyar karein
+best_model = StackingRegressor(estimators=base_models, final_estimator=meta_model, n_jobs=-1)
+
+# Step 4: Train aur Predict karein (Pehele ki tarah)
+best_model.fit(X_train, y_train)
+y_pred = best_model.predict(X_test)
+
+# Result Check Karein
+print(f"🎯 Stacking Model Ka R2 Score: {r2_score(y_test, y_pred) * 100:.2f}%")
+
+```

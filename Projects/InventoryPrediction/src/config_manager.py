@@ -84,7 +84,7 @@ def get_ai_suggestions(df, target_column):
         numeric_df = df.select_dtypes(include=[np.number])
         
         if target_column not in numeric_df.columns or len(numeric_df.columns) <= 1:
-            return None, "AI Analysis ke liye mazeed numeric columns nahi mile."
+            return None, "Insufficient numeric columns for AI Analysis."
             
         # Target ke sath baaki columns ka correlation nikalna
         correlations = numeric_df.corr()[target_column].drop(target_column)
@@ -96,7 +96,7 @@ def get_ai_suggestions(df, target_column):
         best_feature = correlations.abs().idxmax()
         correlation_value = correlations[best_feature]
         
-        suggestion_text = f"💡 AI Suggestion: '{best_feature}' column aapke '{target_column}' ke sabse zyada kareeb hai (Score: {correlation_value:.2f}). Is par prediction karna behtar hoga."
+        suggestion_text = f"💡 AI Suggestion: '{best_feature}' column has the highest correlation with '{target_column}' (Score: {correlation_value:.2f}). We recommend using it for training."
         
         return best_feature, suggestion_text
     except Exception as e:

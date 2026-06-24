@@ -459,7 +459,7 @@ class DashboardScreen(ctk.CTkFrame):
         
     def reset_source_file(self):
         """Resets dynamic path, flushes configuration parameters and restarts GUI cycle"""
-        if messagebox.askyesno("Change File Source", "Kya aap sach me dataset source path change karna chahte hain?"):
+        if messagebox.askyesno("Change File Source", "Are you sure you want to change the dataset source path?"):
             cm.save_file_path("") # Flush global system JSON configuration
             self.parent.df = None
             self.parent.db_path = ""

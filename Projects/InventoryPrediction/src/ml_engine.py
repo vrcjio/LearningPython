@@ -60,14 +60,14 @@ def train_advanced_stacking_model(df, target_col):
         
     # Minimum rows data check
     if len(df) < 10:
-        return False, "Model training ke liye kam se kam 10 dino ka data hona zaroori hai!"
+        return False, ""Model training requires a minimum of 10 days of historical data!"
         
     try:
         # Prepare Features
         X, y, feature_cols, df_clean = create_time_features(df, target_col)
         
         if len(X) < 2:
-            return False, "Data lag features lagane ke baad bohot kam bacha hai. Thoda aur data add karein."
+            return False, "Insufficient data remaining after generating lag features. Please add more rows."
 
         # Base Models define karna
         base_estimators = [
@@ -98,7 +98,7 @@ def train_advanced_stacking_model(df, target_col):
         with open(META_DATA_FILE, "w") as f:
             json.dump(meta_data, f)
             
-        return True, "AI Stacking Model successfully trained aur update ho gaya hai!"
+        return True, "AI Stacking Model successfully trained and updated!"
         
     except Exception as e:
         return False, f"Training Error: {str(e)}"
@@ -109,7 +109,7 @@ def predict_next_days(df, days_to_predict=1):
     Bina user ke input diye, next timeline (Day/Week/Month) automatic forecast karna.
     """
     if not os.path.exists(MODEL_FILE) or not os.path.exists(META_DATA_FILE):
-        return None, "Pehle model ko train karna zaroori hai!"
+        return None, "Please train the AI model via the control panel first!"
         
     try:
         # Load Model aur Meta-Data

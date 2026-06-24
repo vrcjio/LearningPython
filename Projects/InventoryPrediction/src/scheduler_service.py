@@ -19,20 +19,20 @@ logging.basicConfig(
 
 def auto_train_job():
     """🎯 BACKGROUND AUTOMATION JOB: Automatically updates model weights"""
-    logging.info("Scheduled Auto-Training Job trigger hua hai...")
+    logging.info("Scheduled Auto-Training Job triggered successfully...")
     print("[Scheduler] Auto-Training Job Started...")
     
     # 1. Check if valid file path exists in system config
     file_path = cm.get_valid_file_path()
     if not file_path:
-        logging.warning("Auto-Training cancel: Config me koi valid file path nahi mila.")
+        logging.warning("Auto-Training cancelled: No valid file path found in configuration.")
         print("[Scheduler] Skip: No valid data file path found.")
         return
         
     # 2. Check last trained meta data to know what was the target column
     meta_path = os.path.join("models", "model_meta.json")
     if not os.path.exists(meta_path):
-        logging.warning("Auto-Training cancel: Purani model meta file nahi mili (Model pehle GUI se train hona chahiye).")
+        logging.warning("Auto-Training cancelled: Missing model meta file. Run initial training from GUI first.")
         print("[Scheduler] Skip: Meta file missing. Run initial training from GUI first.")
         return
         
@@ -63,7 +63,7 @@ def auto_train_job():
 
 def start_scheduler_daemon():
     """Background loop scheduler initialization"""
-    logging.info("Background AI Scheduler Service shuru ho gayi hai.")
+    logging.info("Background AI Scheduler Service started successfully.")
     print("[Scheduler] Background Daemon Service Activated...")
     
     # Test/Demo ke liye har 10 minute me check karega ya aap custom interval set kar sakte hain:

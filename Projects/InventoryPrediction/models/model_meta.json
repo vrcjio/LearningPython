@@ -1,0 +1,1 @@
+{"target_column": "Spoilage_Waste", "feature_columns": ["Day_of_Week", "Is_Weekend", "Month", "Lag_1", "Lag_2", "Lag_7", "Rolling_Mean_3"], "last_date": "2026-04-30", "last_sales_values": [39, 69, 67, 54, 46, 39, 34]}
